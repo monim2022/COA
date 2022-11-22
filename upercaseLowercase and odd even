@@ -68,15 +68,9 @@ MAIN PROC
     INT 21H
     MOV BL,AL
     
-    
-    
-    
     SUB BL,32
     JMP L1 
-   
-    
-    
-    
+  
     L1:
     MOV AH,9
     LEA DX,B
@@ -85,12 +79,40 @@ MAIN PROC
     MOV AH,02 
     MOV DL,BL
     INT 21H
-    
- 
-    
-    
+
     EXIT:
     MOV AH,4CH
     INT 21H
     MAIN ENDP
     END MAIN
+
+//Task03
+.MODEL SMALL
+.STACK 100H
+.DATA
+A DW ?
+.CODE
+MAIN PROC 
+    MOV AX,@DATA
+    MOV DS,AX 
+    
+    
+    MOV AX,0
+    MOV BX,100
+    
+    MOV CX,20
+    
+    SUM:
+    ADD AX,BX
+    SUB BX,5
+    MOV DX,AX
+    
+    LOOP SUM
+    
+    MOV AH,4CH
+    INT 21H
+    
+    MAIN ENDP
+  END MAIN
+    
+    
